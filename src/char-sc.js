@@ -8,6 +8,6 @@ class Chat {
   }
 
   invite(publicKey) {
-    this.owners.push(publicKey)
+    this._owners.push(publicKey)
   }
 }

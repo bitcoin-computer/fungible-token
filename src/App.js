@@ -7,7 +7,6 @@ import Chat from './Chat.js'
 
 const KEY_NAME = 'create_bitcoin_app_key'
 
-
 function App() {
   const [computer, setComputer] = useState(null)
   const [refresh, setRefresh] = useState(0)
@@ -26,15 +25,11 @@ function App() {
     <div className="App">
       <h1>Bitcoin Chat</h1>
 
-      <h3>Authentication</h3>
       <Login></Login><br />
 
-      <h3>Wallet</h3>
-      <Wallet computer={computer}></Wallet>
+      <Wallet computer={computer}></Wallet><br />
 
-      <h3>Chat</h3>
-      <Chat></Chat>
-
+      <Chat computer={computer}></Chat>
     </div>
   )
 }

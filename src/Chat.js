@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-const KEY_NAME = 'create_bitcoin_app_key'
+import React, { useState } from 'react'
+import ChatSc from './chat-sc'
 
-function Chat() {
+function Chat({ computer }) {
   const [message, setMessage] = useState('')
 
   const send = (e) => {
@@ -9,7 +9,18 @@ function Chat() {
     console.log('sending message', message)
   }
 
+  const createChat = async (e) => {
+    try {
+      e.preventDefault()
+      const chat = await computer.new(ChatSc, [])
+      console.log('created chat with id', chat._id)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return <div>
+    <button onClick={createChat}>Create Chat</button><br /><br />
     <textarea rows="12" cols="60"></textarea>
     <form onSubmit={send}>
       <input type="string" value={message} onChange={(e) => setMessage(e.target.value)} />

@@ -12,7 +12,7 @@ function Wallet({ computer }) {
       setTimeout(() => setRefresh(refresh + 1), 5000)
     }
     getBalance()
-  }, [refresh])
+  }, [refresh, computer])
 
   return (
     <div>

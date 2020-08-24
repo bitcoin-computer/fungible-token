@@ -1,4 +1,4 @@
-class Chat {
+export default class Chat {
   constructor() {
     this.messages = []
   }

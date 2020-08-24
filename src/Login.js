@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 const KEY_NAME = 'create_bitcoin_app_key'
 
-function Login({}) {
+function Login() {
   const [password, setPassword] = useState('')
   const [refresh, setRefresh] = useState(0)
   const [loggedIn, setLoggedIn] = useState(false)

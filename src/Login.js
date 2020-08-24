@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+const KEY_NAME = 'create_bitcoin_app_key'
 
 function Login({}) {
   const [password, setPassword] = useState('')
@@ -6,23 +7,23 @@ function Login({}) {
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
-    setLoggedIn(window.localStorage.getItem('cba_key') !== null)
-  }, [refresh])
+    const password = window.localStorage.getItem(KEY_NAME)
+    setLoggedIn(password !== null)
 
-  useEffect(() => {
     setTimeout(() => setRefresh(refresh + 1), 5000)
   }, [refresh])
 
   const login = (e) => {
     e.preventDefault()
-    window.localStorage.setItem('cba_key', password)
-    console.log('logging in with pdw', password)
+    window.localStorage.setItem(KEY_NAME, password)
   }
 
   return loggedIn
-    ? <button onClick={() => window.localStorage.removeItem('cba_key')}>
-        Logout
-      </button>
+    ? <div>
+        <button onClick={() => window.localStorage.removeItem(KEY_NAME)}>
+          Logout
+        </button><br />
+      </div>
     : <form onSubmit={login}>
         Password
         <br />

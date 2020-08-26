@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import InviteUser from './InviteUser'
 import './App.css'
 
 function Chat({ computer }) {
@@ -28,7 +29,7 @@ function Chat({ computer }) {
   }
 
   return <div>
-    <h1>Chat</h1>
+    <InviteUser chat={chat}></InviteUser><br /><br />
     <textarea rows="12" cols="60" value={chat.messages.join('\n')} readOnly></textarea>
     <form onSubmit={send}>
       <input type="string" value={message} onChange={(e) => setMessage(e.target.value)} />

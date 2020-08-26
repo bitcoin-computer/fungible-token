@@ -1,6 +1,7 @@
 export default class Chat {
-  constructor() {
+  constructor(publicKey) {
     this.messages = []
+    this._owners = [publicKey]
   }
 
   post(message) {

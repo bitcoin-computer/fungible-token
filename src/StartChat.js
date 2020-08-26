@@ -8,7 +8,8 @@ function StartChat({ computer }) {
   const createChat = async (e) => {
     try {
       e.preventDefault()
-      const chat = await computer.new(ChatSc, [])
+      const publicKey = computer.db.wallet.getPublicKey().toString()
+      const chat = await computer.new(ChatSc, [publicKey])
       history.push(`/chat/${chat._id}`)
       console.log('created chat with id', chat._id)
     } catch (err) {
@@ -16,7 +17,7 @@ function StartChat({ computer }) {
     }
 
   }
-  return <div><button onClick={createChat}>Create Chat</button><br /><br /></div>
+  return <div><button onClick={createChat}>Create Chat</button></div>
 }
 
 export default StartChat

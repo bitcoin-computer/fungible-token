@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Computer from 'bitcoin-computer'
 import Login from './Login'
 import Wallet from './Wallet'
@@ -27,7 +27,7 @@ function App() {
     <Router>
       <Switch>
         <Route
-          path="/chat"
+          path="/chat/:id"
           render={(): object => <Chat computer={computer}></Chat>}
         />
         <Route
@@ -41,11 +41,6 @@ function App() {
         />
       </Switch>
     </Router>
-
-
-
-
-
   )
 }
 

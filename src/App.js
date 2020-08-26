@@ -15,8 +15,10 @@ function App() {
 
   useEffect(() => {
     const password = window.localStorage.getItem(KEY_NAME)
+    // if you are currently logging in
     if (password !== null && !computer)
       setComputer(new Computer({ chain: 'BSV', network: 'testnet', seed: password }))
+    // if you are currently logging out
     else if(password === null && computer)
       setComputer(null)
 

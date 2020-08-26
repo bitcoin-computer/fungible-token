@@ -19,11 +19,9 @@ function Login() {
   }
 
   return loggedIn
-    ? <div>
-        <button onClick={() => window.localStorage.removeItem(KEY_NAME)}>
-          Logout
-        </button><br />
-      </div>
+    ? <><button onClick={() => window.localStorage.removeItem(KEY_NAME)}>
+        Logout
+      </button><br /></>
     : <form onSubmit={login}>
         Password
         <br />

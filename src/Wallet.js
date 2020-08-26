@@ -6,21 +6,19 @@ function Wallet({ computer }) {
 
   useEffect(() => {
     const getBalance = async () => {
-      if(computer) {
+      if(computer)
         setBalance(await computer.db.wallet.getBalance())
-      }
+
       setTimeout(() => setRefresh(refresh + 1), 5000)
     }
     getBalance()
   }, [refresh, computer])
 
-  return (
-    <div>
+  return <div>
       <b>Address</b> {computer ? computer.db.wallet.getAddress().toString() : ''}<br />
       <b>Public Key</b> {computer ? computer.db.wallet.getPublicKey().toString() : ''}<br />
       <b>Balance</b> {balance/1e8} BSV
     </div>
-  )
 }
 
 export default Wallet

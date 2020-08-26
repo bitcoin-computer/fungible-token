@@ -29,7 +29,7 @@ function Chat({ computer }) {
 
   return <div>
     <h1>Chat</h1>
-    <textarea rows="12" cols="60" value={chat.messages.join('\n')}></textarea>
+    <textarea rows="12" cols="60" value={chat.messages.join('\n')} readOnly></textarea>
     <form onSubmit={send}>
       <input type="string" value={message} onChange={(e) => setMessage(e.target.value)} />
       <button type="submit">Send</button>

@@ -27,21 +27,20 @@ function App() {
 
   return (
     <Router>
-      <Switch>
-        <Route
-          path="/chat/:id"
-          render={(): object => <Chat computer={computer}></Chat>}
-        />
-        <Route
-          path="/"
-          render={(): object => (<div className="App">
-            <h1>Bitcoin Chat</h1>
-            <Login></Login><br />
-            <Wallet computer={computer}></Wallet><br />
-            <StartChat computer={computer}></StartChat>
-          </div>)}
-        />
-      </Switch>
+      <div className="App">
+        <a href='/'>home</a>
+        <h1>Bitcoin Chat</h1>
+        <Login></Login><br />
+        <Wallet computer={computer}></Wallet><br />
+        <StartChat computer={computer}></StartChat>
+        <Switch>
+          <Route
+            path="/chat/:id"
+            render={(): object => <Chat computer={computer}></Chat>}
+          />
+
+        </Switch>
+      </div>
     </Router>
   )
 }

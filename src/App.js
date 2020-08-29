@@ -21,9 +21,11 @@ function App() {
     // if you are currently logging out
     else if(password === null && computer)
       setComputer(null)
-
-    setTimeout(() => setRefresh(refresh + 1), 5000)
   }, [refresh, computer])
+
+  useEffect(() => {
+    setTimeout(() => setRefresh(refresh + 1), 5000)
+  }, [refresh])
 
   return (
     <Router>

@@ -18,9 +18,11 @@ function Chat({ computer }) {
       }
     }
     refreshChat()
-
-    setTimeout(() => setRefresh(refresh + 1), 5000)
   }, [id, computer, refresh])
+
+  useEffect(() => {
+    setTimeout(() => setRefresh(refresh + 1), 5000)
+  }, [refresh])
 
   const send = async (e) => {
     e.preventDefault()

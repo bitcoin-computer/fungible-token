@@ -8,11 +8,13 @@ function Wallet({ computer }) {
     const getBalance = async () => {
       if(computer)
         setBalance(await computer.db.wallet.getBalance())
-
-      setTimeout(() => setRefresh(refresh + 1), 5000)
     }
     getBalance()
   }, [refresh, computer])
+
+  useEffect(() => {
+    setTimeout(() => setRefresh(refresh + 1), 5000)
+  }, [refresh])
 
   return <div>
       <b>Address</b> {computer ? computer.db.wallet.getAddress().toString() : ''}<br />

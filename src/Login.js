@@ -9,7 +9,9 @@ function Login() {
   useEffect(() => {
     const password = window.localStorage.getItem(KEY_NAME)
     setLoggedIn(password !== null)
+  }, [refresh])
 
+  useEffect(() => {
     setTimeout(() => setRefresh(refresh + 1), 5000)
   }, [refresh])
 

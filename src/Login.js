@@ -3,17 +3,14 @@ const KEY_NAME = 'create_bitcoin_app_key'
 
 function Login() {
   const [password, setPassword] = useState('')
-  const [refresh, setRefresh] = useState(0)
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
-    const password = window.localStorage.getItem(KEY_NAME)
-    setLoggedIn(password !== null)
-  }, [refresh])
-
-  useEffect(() => {
-    setTimeout(() => setRefresh(refresh + 1), 5000)
-  }, [refresh])
+    setInterval(() =>
+      setLoggedIn(!!window.localStorage.getItem(KEY_NAME)),
+      2000
+    )
+  }, [])
 
   const login = (e) => {
     e.preventDefault()
@@ -25,10 +22,8 @@ function Login() {
         Logout
       </button><br /></>
     : <form onSubmit={login}>
-        Password
-        <br />
-        <input type="string" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Login</button>
+        <input placeholder='Password' type="string" value={password} onChange={(e) => setPassword(e.target.value)} />
+        &nbsp;<button type="submit">Login</button>
       </form>
 }
 

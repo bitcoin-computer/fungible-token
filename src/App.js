@@ -12,6 +12,7 @@ const KEY_NAME = 'create_bitcoin_app_key'
 function App() {
   const [computer, setComputer] = useState(null)
   const [refresh, setRefresh] = useState(0)
+  const [myObjects, setMyObjects] = useState([])
 
   useEffect(() => {
     const password = window.localStorage.getItem(KEY_NAME)
@@ -24,24 +25,42 @@ function App() {
   }, [refresh, computer])
 
   useEffect(() => {
+    const refresh = async () => {
+      if (computer) {
+        const revs = await computer.getRevs(computer.db.wallet.getPublicKey().toString())
+        setMyObjects(await Promise.all(revs.map(
+          async rev => computer.sync(rev))
+        ))
+      }
+    }
+    refresh()
+  }, [refresh, computer])
+
+  useEffect(() => {
     setTimeout(() => setRefresh(refresh + 1), 5000)
   }, [refresh])
 
   return (
     <Router>
       <div className="App">
-        <a href='/'>home</a>
-        <h1>Bitcoin Chat</h1>
-        <Login></Login><br />
-        <Wallet computer={computer}></Wallet><br />
-        <StartChat computer={computer}></StartChat>
-        <Switch>
-          <Route
-            path="/chat/:id"
-            render={(): object => <Chat computer={computer}></Chat>}
-          />
+        <div className="sidenav">
+          {myObjects.map(object => <><a href={`/chat/${object._id}`}>{object._id.substr(0, 16)}</a><br /></>)}
+        </div>
 
-        </Switch>
+        <div className="main">
+          <a href='/'>home</a>
+          <h1>Bitcoin Chat</h1>
+          <Login></Login><br />
+          <Wallet computer={computer}></Wallet><br />
+          <StartChat computer={computer}></StartChat>
+          <Switch>
+            <Route
+              path="/chat/:id"
+              render={(): object => <Chat computer={computer}></Chat>}
+            />
+
+          </Switch>
+      </div>
       </div>
     </Router>
   )

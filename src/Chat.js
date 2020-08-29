@@ -31,7 +31,7 @@ function Chat({ computer }) {
   }
 
   return <div>
-    <InviteUser chat={chat}></InviteUser><br /><br />
+    <InviteUser chat={chat}></InviteUser><br />
     <textarea rows="12" cols="60" value={chat.messages.join('\n')} readOnly></textarea>
     <form onSubmit={send}>
       <input type="string" value={message} onChange={(e) => setMessage(e.target.value)} />

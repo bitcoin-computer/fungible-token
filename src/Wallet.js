@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Login from './Login'
 
 function Wallet({ computer }) {
   const [balance, setBalance] = useState(0)
@@ -16,10 +17,11 @@ function Wallet({ computer }) {
     setTimeout(() => setRefresh(refresh + 1), 5000)
   }, [refresh])
 
-  return <div>
-      <b>Address</b> {computer ? computer.db.wallet.getAddress().toString() : ''}<br />
-      <b>Public Key</b> {computer ? computer.db.wallet.getPublicKey().toString() : ''}<br />
-      <b>Balance</b> {balance/1e8} BSV
+  return <div className='flex'>
+    <small><b>Public Key</b> {computer ? computer.db.wallet.getPublicKey().toString() : ''}<br /></small>
+    <small><b>Balance</b> {balance / 1e8} BSV</small>
+    <small><b>Address</b> {computer ? computer.db.wallet.getAddress().toString() : ''}<br /></small>
+    <small><Login></Login></small>
     </div>
 }
 

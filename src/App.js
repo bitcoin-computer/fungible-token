@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Computer from 'bitcoin-computer'
-import Login from './Login'
 import Wallet from './Wallet'
 import Chat from './Chat'
 import StartChat from './StartChat'
@@ -43,16 +42,14 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Wallet computer={computer}></Wallet><br />
         <div className="sidenav">
-          {myObjects.map(object => <><a href={`/chat/${object._id}`}>{object._id.substr(0, 16)}</a><br /></>)}
+          <StartChat computer={computer}></StartChat><br />
+          {myObjects.map(object => <small><a href={`/chat/${object._id}`}>{object._id.substr(0, 16)}</a><br /></small>)}
         </div>
 
         <div className="main">
-          <a href='/'>home</a>
           <h1>Bitcoin Chat</h1>
-          <Login></Login><br />
-          <Wallet computer={computer}></Wallet><br />
-          <StartChat computer={computer}></StartChat>
           <Switch>
             <Route
               path="/chat/:id"

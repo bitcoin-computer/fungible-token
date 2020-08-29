@@ -13,7 +13,7 @@ function StartChat({ computer }) {
       history.push(`/chat/${chat._id}`)
       console.log('created chat with id', chat._id)
     } catch (err) {
-      console.log(err)
+      console.log(err.message)
     }
 
   }

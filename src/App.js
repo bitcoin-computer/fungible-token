@@ -13,11 +13,12 @@ function App() {
 
   useInterval(() => {
     const password = window.localStorage.getItem('BIP_39_KEY')
+    const chain = window.localStorage.getItem('CHAIN')
       // if you are currently logging in
-      if (password !== null && !computer){
-        setComputer(new Computer({ chain: 'BSV', network: 'testnet', seed: password }))
+      if (password && chain && !computer){
+        setComputer(new Computer({ chain, network: 'testnet', seed: password }))
       // if you are currently logging out
-      } else if (password === null && computer){
+      } else if (!(password || chain) && computer){
         setComputer(null)
       }
   }, 3000)

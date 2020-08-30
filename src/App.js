@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Computer from 'bitcoin-computer'
 import Wallet from './Wallet'
 import Chat from './Chat'
-import StartChat from './StartChat'
+import SideBar from './SideBar'
 import './App.css'
 import useInterval from './useInterval'
 
@@ -40,12 +40,7 @@ function App() {
     <Router>
       <div className="App">
         <Wallet computer={computer}></Wallet>
-        <div className="sidenav">
-          <StartChat computer={computer}></StartChat><br />
-          {chats.map(object =>
-            <small key={object._id}><Link to={`/chat/${object._id}`}>{object._id.substr(0, 16)}</Link><br /></small>
-          )}
-        </div>
+        <SideBar computer={computer} chats={chats}></SideBar>
 
         <div className="main">
           <Switch>

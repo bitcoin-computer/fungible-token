@@ -12,9 +12,9 @@ code {
     monospace;
 }
 
-.sidenav {
+.sidebar {
   margin: 68px 8px 8px 8px;
-  height: 100%;
+  height: calc(100vh - 80px);
   width: 165px;
   position: fixed;
   z-index: 1;
@@ -65,4 +65,9 @@ input {
 .login-screen button {
   width: 100px;
   margin: 5px 0;
+}
+
+.branding {
+  position: absolute;
+  bottom: 0;
 }

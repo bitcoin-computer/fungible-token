@@ -11,7 +11,7 @@ function Login() {
 
   useInterval(() => {
     setLoggedIn(!!window.localStorage.getItem(KEY_NAME))
-  }, 3000)
+  }, 500)
 
   const login = (e) => {
     e.preventDefault()

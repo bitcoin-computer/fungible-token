@@ -28,7 +28,9 @@ function Chat({ computer }) {
   const send = async (e) => {
     e.preventDefault()
     const username = window.localStorage.getItem(USER_NAME)
-    await chat.post(`${username}: ${message}`)
+    const line = `${username}: ${message}`
+    await chat.post(line)
+    console.log(`Sent message ${line}\n  chat id  ${chat._id}\n  chat rev ${chat._rev}`)
     setMessage('')
   }
 

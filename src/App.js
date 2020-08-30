@@ -11,7 +11,7 @@ const KEY_NAME = 'create_bitcoin_app_key'
 
 function App() {
   const [computer, setComputer] = useState(null)
-  const [myObjects, setMyObjects] = useState([])
+  const [chats, setChats] = useState([])
 
   useInterval(() => {
     const password = window.localStorage.getItem(KEY_NAME)
@@ -28,7 +28,7 @@ function App() {
     const refresh = async () => {
       if (computer) {
         const revs = await computer.getRevs(computer.db.wallet.getPublicKey().toString())
-        setMyObjects(await Promise.all(revs.map(
+        setChats(await Promise.all(revs.map(
           async rev => computer.sync(rev))
         ))
       }
@@ -42,7 +42,7 @@ function App() {
         <Wallet computer={computer}></Wallet>
         <div className="sidenav">
           <StartChat computer={computer}></StartChat><br />
-          {myObjects.map(object =>
+          {chats.map(object =>
             <small key={object._id}><Link to={`/chat/${object._id}`}>{object._id.substr(0, 16)}</Link><br /></small>
           )}
         </div>

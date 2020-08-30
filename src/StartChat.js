@@ -11,7 +11,7 @@ function StartChat({ computer }) {
       const publicKey = computer.db.wallet.getPublicKey().toString()
       const chat = await computer.new(ChatSc, [publicKey])
       history.push(`/chat/${chat._id}`)
-      console.log('created chat with id', chat._id)
+      console.log('Created chat with id', chat._id)
     } catch (err) {
       console.log(err.message)
     }

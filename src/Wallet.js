@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Login from './Login'
+import useInterval from './useInterval'
 
 function Wallet({ computer }) {
   const [balance, setBalance] = useState(0)
-  const [refresh, setRefresh] = useState(0)
 
-  useEffect(() => {
+  useInterval(() => {
     const getBalance = async () => {
-      if(computer)
-        setBalance(await computer.db.wallet.getBalance())
+      if(computer) setBalance(await computer.db.wallet.getBalance())
     }
     getBalance()
-  }, [refresh, computer])
-
-  useEffect(() => {
-    setTimeout(() => setRefresh(refresh + 1), 5000)
-  }, [refresh])
+  }, 3000)
 
   return <div className='flex'>
     <small><b>Public Key</b> {computer ? computer.db.wallet.getPublicKey().toString() : ''}<br /></small>

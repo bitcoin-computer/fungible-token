@@ -1,8 +1,6 @@
 import React from 'react'
-import ChatSc from './chat-sc'
 
 function InviteUser({ chat }) {
-
   const inviteUser = async (e) => {
     try {
       e.preventDefault()
@@ -11,7 +9,6 @@ function InviteUser({ chat }) {
     } catch (err) {
       console.log(err)
     }
-
   }
   return <div><button onClick={inviteUser}>Invite User</button></div>
 }

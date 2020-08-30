@@ -13,7 +13,7 @@ code {
 }
 
 .sidenav {
-  margin: 80px 8px 8px 8px;
+  margin: 68px 8px 8px 8px;
   height: 100%;
   width: 165px;
   position: fixed;
@@ -26,7 +26,7 @@ code {
 }
 
 .main {
-  margin-left: 180px;
+  margin: 40px 0px 5px 180px;
 }
 
 .flex {
@@ -36,10 +36,33 @@ code {
 
 textarea {
   width: calc(100vw - 200px);
-  height: calc(100vh - 225px);
+  height: calc(100vh - 160px);
 }
 
 input {
   width: calc(100vw - 257px);
   margin-right: 5px;
+}
+
+.login-screen {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-screen input {
+  width: 400px;
+  margin: 5px 0;
+}
+
+.login-screen button {
+  width: 100px;
+  margin: 5px 0;
 }

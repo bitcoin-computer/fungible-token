@@ -12,7 +12,7 @@ function SideBar({ chats, computer }) {
     <div className="branding">
       <small>This chat runs on the</small><br />
       <small><a href='http:/bitcoincomputer.io'>Bitcoin Computer</a></small><br />
-      <small><a href='http:/bitcoincomputer.io'>Fork on Github</a></small>
+      <small><a href='http:/bitcoincomputer.io'>Improve chat on Github</a></small>
     </div>
   </div>
 }

@@ -7,14 +7,12 @@ import SideBar from './SideBar'
 import './App.css'
 import useInterval from './useInterval'
 
-const KEY_NAME = 'create_bitcoin_app_key'
-
 function App() {
   const [computer, setComputer] = useState(null)
   const [chats, setChats] = useState([])
 
   useInterval(() => {
-    const password = window.localStorage.getItem(KEY_NAME)
+    const password = window.localStorage.getItem('BIP_39_KEY')
       // if you are currently logging in
       if (password !== null && !computer){
         setComputer(new Computer({ chain: 'BSV', network: 'testnet', seed: password }))

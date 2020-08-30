@@ -1,26 +1,24 @@
 import React, { useState } from 'react'
 import useInterval from './useInterval'
 
-const KEY_NAME = 'create_bitcoin_app_key'
-const USER_NAME = 'create_bitcoin_app_user'
-
 function Login() {
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
+  const [chain, setChain] = useState('bsv')
 
   useInterval(() => {
-    setLoggedIn(!!window.localStorage.getItem(KEY_NAME))
+    setLoggedIn(!!window.localStorage.getItem('BIP_39_KEY'))
   }, 500)
 
   const login = (e) => {
     e.preventDefault()
-    window.localStorage.setItem(KEY_NAME, password)
-    window.localStorage.setItem(USER_NAME, username)
+    window.localStorage.setItem('BIP_39_KEY', password)
+    window.localStorage.setItem('USER_NAME', username)
   }
 
   return loggedIn
-    ? <><button onClick={() => window.localStorage.removeItem(KEY_NAME)}>
+    ? <><button onClick={() => window.localStorage.removeItem('BIP_39_KEY')}>
         Logout
       </button><br /></>
     : <div className='login-screen'>

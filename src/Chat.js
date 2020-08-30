@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import InviteUser from './InviteUser'
 import './App.css'
-const USER_NAME = 'create_bitcoin_app_user'
 
 function Chat({ computer }) {
   const [message, setMessage] = useState('')
@@ -27,7 +26,7 @@ function Chat({ computer }) {
 
   const send = async (e) => {
     e.preventDefault()
-    const username = window.localStorage.getItem(USER_NAME)
+    const username = window.localStorage.getItem('USER_NAME')
     const line = `${username}: ${message}`
     await chat.post(line)
     console.log(`Sent message ${line}\n  chat id  ${chat._id}\n  chat rev ${chat._rev}`)

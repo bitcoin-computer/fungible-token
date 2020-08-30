@@ -13,7 +13,8 @@ function StartChat({ computer }) {
       history.push(`/chat/${chat._id}`)
       console.log('Created chat with id', chat._id)
     } catch (err) {
-      console.log(err.message)
+      if(err.message.startsWith('Insufficient balance in address'))
+        alert('You have to fund your wallet https://faucet.bitcoincloud.net/')
     }
 
   }

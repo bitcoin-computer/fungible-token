@@ -27,8 +27,8 @@ function Login() {
         <div>
           <h1>Bitcoin Computer Chat</h1><br />
           <form onSubmit={login}>
-            <input placeholder='User Name' type="string" value={username} onChange={(e) => setUsername(e.target.value)} /><br />
-            <input placeholder='Password' type="string" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
+            <input placeholder='User Name (anything)' type="string" value={username} onChange={(e) => setUsername(e.target.value)} /><br />
+            <input placeholder='Password (BIP39)' type="string" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
             <button type="submit">Login</button>
           </form>
         </div>

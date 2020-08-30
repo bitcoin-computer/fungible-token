@@ -20,6 +20,10 @@ For more information see the [Bitcoin Computer Docs](https://docs.bitcoincompute
 
 The chat is very bare bones and contributions are more than welcome. Have a look at the open issues, or make a pull request with a new feature. You can also request a feature request by creating an issue.
 
+## Screenshots
+
+![login-screen](https://i.ibb.co/RzHdPMS/Screen-Shot-2020-08-29-at-20-03-04.png)
+
 # MIT Licence
 
 Copyright 2020 Clemens Ley

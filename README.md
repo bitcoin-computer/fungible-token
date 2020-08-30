@@ -24,6 +24,8 @@ The chat is very bare bones and contributions are more than welcome. Have a look
 
 ![login-screen](https://i.ibb.co/RzHdPMS/Screen-Shot-2020-08-29-at-20-03-04.png)
 
+![chat-screen](https://i.ibb.co/WDSCCvb/Screen-Shot-2020-08-29-at-20-02-59.png)
+
 # MIT Licence
 
 Copyright 2020 Clemens Ley

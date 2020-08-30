@@ -12,9 +12,9 @@ Clone the repo and run
 npm run start
 ````
 
-To log into the chat you need a BIP39 seed phrase, for exmple from [here]('http://bsv-account-generator.herokuapp.com/'). You then need to fund the wallet using a [Bitcoin SV faucet](https://faucet.bitcoincloud.net/)
+To log into the chat you need a BIP39 seed phrase, for exmple from [here](http://bsv-account-generator.herokuapp.com/). You then need to fund the wallet using a [Bitcoin SV faucet](https://faucet.bitcoincloud.net/)
 
-For more information see the [Bitcoin Computer Docs](http://bitcoincomputer.io) or ask on the [Telegram Group](https://t.me/joinchat/FMrjOUWRuUkNuIt7zJL8tg).
+For more information see the [Bitcoin Computer Docs](https://docs.bitcoincomputer.io/getting-started/run-in-a-browser) or ask in the [Telegram Group](https://t.me/joinchat/FMrjOUWRuUkNuIt7zJL8tg).
 
 ## Contributing
 

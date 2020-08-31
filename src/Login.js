@@ -32,7 +32,7 @@ function Login() {
         <div>
           <h1>Bitcoin Computer Chat</h1><br />
           <form onSubmit={login}>
-            <select value={chain} id="chain">
+          <select value={chain} onChange={(e) => setChain(e.target.value)} id="chain">
               <option value="BSV">BSV</option>
               <option value="BCH">BCH</option>
             </select><br />

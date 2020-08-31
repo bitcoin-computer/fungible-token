@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import ChatSc from './chat-sc'
+import Utils from './utils'
 
 function StartChat({ computer }) {
   const history = useHistory()
@@ -9,6 +9,7 @@ function StartChat({ computer }) {
     try {
       e.preventDefault()
       const publicKey = computer.db.wallet.getPublicKey().toString()
+      const ChatSc= await Utils.importFromPublic('/chat-sc.js')
       const chat = await computer.new(ChatSc, [publicKey])
       history.push(`/chat/${chat._id}`)
       console.log('Created chat with id', chat._id)

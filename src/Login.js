@@ -5,7 +5,8 @@ function Login() {
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
-  const [chain, setChain] = useState('bsv')
+  const [chain, setChain] = useState('BSV')
+
 
   useInterval(() => {
     setLoggedIn(!!window.localStorage.getItem('BIP_39_KEY'))
@@ -17,18 +18,39 @@ function Login() {
     window.localStorage.setItem('USER_NAME', username)
   }
 
+  const toggleChain = (e) => {
+    e.preventDefault()
+    if (chain === 'BSV'){
+      //set the state for the value of the chain property here
+      setChain("BCH")
+      //assign the chosen chain to local storage for when the computer is init'd
+      window.localStorage.setItem('CHAIN', "BCH")
+    } else {
+      //set the state for the value of the chain property here
+      setChain("BSV")
+      //assign the chosen chain to local storage for when the computer is init'd
+      window.localStorage.setItem('CHAIN', "BSV")
+    }
+  }
+
   return loggedIn
     ? <><button onClick={() => window.localStorage.removeItem('BIP_39_KEY')}>
         Logout
       </button><br /></>
     : <div className='login-screen'>
-        <div>
-          <h1>Bitcoin Computer Chat</h1><br />
-          <form onSubmit={login}>
-            <input placeholder='User Name (anything)' type="string" value={username} onChange={(e) => setUsername(e.target.value)} /><br />
-            <input placeholder='Password (BIP39)' type="string" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
-            <button type="submit">Login</button>
+        <div id="">
+          <div className="module center padding-left-24">
+            <h2 className="margin-auto"> Chat - By Bitcoin Computer </h2>
+            {/* Use the state of this component to determine which button should be toggled */}
+           <button className={chain === 'BSV' ? 'button bsv-btn' : 'button empty-button'} onClick={toggleChain} > BSV </button>
+           <button className={chain === 'BCH' ? 'button bch-btn' : 'button empty-button'} onClick={toggleChain}> BCH </button>
+            <form onSubmit={login}>
+            <input className="textbox" placeholder='User Name (anything)' type="string" value={username} onChange={(e) => setUsername(e.target.value)} /><br />
+            <input className="textbox" placeholder='Password (BIP39 Generated Seed Phrase)' type="string" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
+            <button type="submit" className="button">Login</button>
           </form>
+          <div> Need A Seed (Password?) <a _target="blank" href='http://accounts.protoshi.com'>Click Here</a></div>
+          </div>
         </div>
       </div>
 }

@@ -13,21 +13,21 @@ function App() {
   const [chain, setChain] = useState('BSV')
 
   useInterval(() => {
+    // the BIP_39_KEY is set on login and we fetch it from local storage
     const password = window.localStorage.getItem('BIP_39_KEY')
+    // the chain has also been stored in local storage on login, we need
+    // to store the chain in the state because we pass it to Wallet
+    setChain(window.localStorage.getItem('CHAIN'))
+
+    const isLoggedIn = password && chain
+
     // if you are currently logging in
-    if (password !== null && !computer){
-      //clicking one of the toggle buttons on login will set this value 
-      let _chain = window.localStorage.getItem('CHAIN')
-      //if chain doesnt exist in storage, set it to BSV 
-      if(_chain === undefined){
-        _chain = chain
-        //otherwise set the current state value to the value we pulled from local storage 
-      } else (setChain(_chain))
-      console.log('chain from local staorage on app:' + _chain)
-      setComputer(new Computer({ chain: _chain, network: 'testnet', seed: password }))
-      console.log("Bitcoin Computer created on chain: " + _chain)
+    if (isLoggedIn && !computer){
+      setComputer(new Computer({ chain, network: 'testnet', seed: password }))
+      console.log("Bitcoin Computer created on chain: " + chain)
     // if you are currently logging out
-    } else if (password === null && computer){
+    } else if (!isLoggedIn && computer){
+      console.log("You have been logged out")
       setComputer(null)
     }
   }, 3000)

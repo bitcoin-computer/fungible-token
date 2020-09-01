@@ -7,7 +7,6 @@ function Login() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [chain, setChain] = useState('BSV')
 
-
   useInterval(() => {
     setLoggedIn(!!window.localStorage.getItem('BIP_39_KEY'))
   }, 500)
@@ -16,6 +15,13 @@ function Login() {
     e.preventDefault()
     window.localStorage.setItem('BIP_39_KEY', password)
     window.localStorage.setItem('USER_NAME', username)
+    window.localStorage.setItem('CHAIN', chain)
+  }
+
+  const logout = (e) => {
+    window.localStorage.removeItem('BIP_39_KEY')
+    window.localStorage.removeItem('USER_NAME')
+    window.localStorage.removeItem('CHAIN')
   }
 
   const toggleChain = (e) => {
@@ -34,7 +40,7 @@ function Login() {
   }
 
   return loggedIn
-    ? <><button onClick={() => window.localStorage.removeItem('BIP_39_KEY')}>
+    ? <><button onClick={logout}>
         Logout
       </button><br /></>
     : <div className='login-screen'>
@@ -48,6 +54,7 @@ function Login() {
             <input className="textbox" placeholder='User Name (anything)' type="string" value={username} onChange={(e) => setUsername(e.target.value)} /><br />
             <input className="textbox" placeholder='Password (BIP39 Generated Seed Phrase)' type="string" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
             <button type="submit" className="button">Login</button>
+
           </form>
           <div> Need A Seed (Password?) <a _target="blank" href='http://accounts.protoshi.com'>Click Here</a></div>
           </div>

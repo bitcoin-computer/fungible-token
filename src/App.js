@@ -10,17 +10,26 @@ import useInterval from './useInterval'
 function App() {
   const [computer, setComputer] = useState(null)
   const [chats, setChats] = useState([])
+  const [chain, setChain] = useState('BSV')
 
   useInterval(() => {
+    // the BIP_39_KEY is set on login and we fetch it from local storage
     const password = window.localStorage.getItem('BIP_39_KEY')
-    const chain = window.localStorage.getItem('CHAIN')
-      // if you are currently logging in
-      if (password && chain && !computer){
-        setComputer(new Computer({ chain, network: 'testnet', seed: password }))
-      // if you are currently logging out
-      } else if (!(password || chain) && computer){
-        setComputer(null)
-      }
+    // the chain has also been stored in local storage on login, we need
+    // to store the chain in the state because we pass it to Wallet
+    setChain(window.localStorage.getItem('CHAIN'))
+
+    const isLoggedIn = password && chain
+
+    // if you are currently logging in
+    if (isLoggedIn && !computer){
+      setComputer(new Computer({ chain, network: 'testnet', seed: password }))
+      console.log("Bitcoin Computer created on chain: " + chain)
+    // if you are currently logging out
+    } else if (!isLoggedIn && computer){
+      console.log("You have been logged out")
+      setComputer(null)
+    }
   }, 3000)
 
   useInterval(() => {
@@ -38,12 +47,13 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Wallet computer={computer}></Wallet>
-        <SideBar computer={computer} chats={chats}></SideBar>
+        {/* bind the value of chain stored in the state to the child component */}
+        <Wallet computer={computer} chain={chain}></Wallet>
+        <SideBar computer={computer} chats={chats} ></SideBar>
 
         <div className="main">
           <Switch>
-            <Route path="/chat/:id" render={(): object => <Chat computer={computer}></Chat>} />
+            <Route path="/chat/:id" render={() => <Chat computer={computer}></Chat>} />
           </Switch>
         </div>
       </div>

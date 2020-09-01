@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Login from './Login'
 import useInterval from './useInterval'
 
-function Wallet({ computer }) {
+function Wallet({ computer, chain}) {
   const [balance, setBalance] = useState(0)
 
   useInterval(() => {
@@ -14,9 +14,9 @@ function Wallet({ computer }) {
 
   return <div className='flex'>
     <small><b>Public Key</b> {computer ? computer.db.wallet.getPublicKey().toString() : ''}<br /></small>
-    <small><b>Balance</b> {balance / 1e8} BSV</small>
+    <small><b>Balance</b> {balance / 1e8} {chain}</small>
     <small><b>Address</b> {computer ? computer.db.wallet.getAddress().toString() : ''}<br /></small>
-    <small><Login></Login></small>
+    <small><Login ></Login></small>
     </div>
 }
 

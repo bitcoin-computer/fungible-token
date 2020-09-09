@@ -22,9 +22,9 @@ function MintToken({ computer }) {
   }
   return <form onSubmit={mintToken}>
     <small>Token Supply</small><br />
-    <input type="string" value={supply} onChange={(e) => setSupply(e.target.value)} />
+    <input type="number" value={supply} onChange={(e) => setSupply(e.target.value)} /><br />
     <small>Token Name</small><br />
-    <input type="string" value={name} onChange={(e) => setName(e.target.value)} />
+    <input type="string" value={name} onChange={(e) => setName(e.target.value)} /><br />
     <button type="submit">Mint Token</button>
   </form>}
 

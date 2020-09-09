@@ -9,7 +9,9 @@ import useInterval from './useInterval'
 function App() {
   const [computer, setComputer] = useState(null)
   const [tokens, setTokens] = useState([])
-  const [amount, setAmount] = useState(0)
+  const [amountToMint, setAmountToMint] = useState(0)
+  const [amountToSend, setAmountToSend] = useState(0)
+  const [to, setTo] = useState('')
   const [chain, setChain] = useState('BSV')
 
   useInterval(() => {
@@ -40,11 +42,26 @@ function App() {
           async rev => computer.sync(rev))
         ))
 
-        setAmount(tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0))
+        setAmountToMint(tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0))
       }
     }
     refresh()
   }, 3000)
+
+  const send = async (e) => {
+    e.preventDefault()
+    const tokenToSpend = tokens.find(token => {
+      console.log('token.coins', token.coins, 'amountToSend', amountToSend, token.coins >= amountToSend)
+      return parseInt(token.coins, 10) >= amountToSend
+    })
+    console.log('tokenToSpend', tokenToSpend)
+    if(tokenToSpend){
+      await tokenToSpend.send(amountToSend, to)
+      console.log('sent', amountToSend, 'from token with id', tokenToSpend._id)
+    } else {
+      alert('Insuficient funds')
+    }
+  }
 
   return (
     <Router>
@@ -55,12 +72,17 @@ function App() {
 
         <div className="main">
           <h3>Your Balance</h3>
-          {amount}
-          {/* <h3>Your Token</h3>
+          {amountToMint}
+
+          <h3>Send Token</h3>
           <form onSubmit={send}>
-            <input type="string" value={message} onChange={(e) => setMessage(e.target.value)} />
+            Amount<br />
+            <input type="number" value={amountToSend} onChange={(e) => setAmountToSend(e.target.value)} /><br />
+            To<br />
+            <input type="string" value={to} onChange={(e) => setTo(e.target.value)} /><br />
+
             <button type="submit">Send</button>
-          </form> */}
+          </form>
         </div>
       </div>
     </Router>

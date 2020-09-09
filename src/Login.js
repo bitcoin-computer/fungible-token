@@ -46,7 +46,7 @@ function Login() {
     : <div className='login-screen'>
         <div id="">
           <div className="module center padding-left-24">
-            <h2 className="margin-auto"> Chat - By Bitcoin Computer </h2>
+            <h2 className="margin-auto"> Token Wallet - By Bitcoin Computer </h2>
             {/* Use the state of this component to determine which button should be toggled */}
            <button className={chain === 'BSV' ? 'button bsv-btn' : 'button empty-button'} onClick={toggleChain} > BSV </button>
            <button className={chain === 'BCH' ? 'button bch-btn' : 'button empty-button'} onClick={toggleChain}> BCH </button>

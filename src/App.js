@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Computer from 'bitcoin-computer'
 import Wallet from './Wallet'
-import Chat from './Chat'
 import SideBar from './SideBar'
 import './App.css'
 import useInterval from './useInterval'
 
 function App() {
   const [computer, setComputer] = useState(null)
-  const [chats, setChats] = useState([])
+  const [tokens, setTokens] = useState([])
+  const [amount, setAmount] = useState(0)
   const [chain, setChain] = useState('BSV')
 
   useInterval(() => {
@@ -36,9 +36,11 @@ function App() {
     const refresh = async () => {
       if (computer) {
         const revs = await computer.getRevs(computer.db.wallet.getPublicKey().toString())
-        setChats(await Promise.all(revs.map(
+        setTokens(await Promise.all(revs.map(
           async rev => computer.sync(rev))
         ))
+
+        setAmount(tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0))
       }
     }
     refresh()
@@ -49,12 +51,16 @@ function App() {
       <div className="App">
         {/* bind the value of chain stored in the state to the child component */}
         <Wallet computer={computer} chain={chain}></Wallet>
-        <SideBar computer={computer} chats={chats} ></SideBar>
+        <SideBar computer={computer} tokens={tokens} ></SideBar>
 
         <div className="main">
-          <Switch>
-            <Route path="/chat/:id" render={() => <Chat computer={computer}></Chat>} />
-          </Switch>
+          <h3>Your Balance</h3>
+          {amount}
+          {/* <h3>Your Token</h3>
+          <form onSubmit={send}>
+            <input type="string" value={message} onChange={(e) => setMessage(e.target.value)} />
+            <button type="submit">Send</button>
+          </form> */}
         </div>
       </div>
     </Router>

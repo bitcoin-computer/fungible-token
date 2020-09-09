@@ -1,18 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import StartChat from './StartChat'
+import MintToken from './MintToken'
 
-function SideBar({ chats, computer }) {
+function SideBar({ tokens, computer }) {
 
   return <div className="sidebar">
-    <StartChat computer={computer}></StartChat><br />
-    {chats.map(object =>
-      <small key={object._id}><Link to={`/chat/${object._id}`}>{object._id.substr(0, 16)}</Link><br /></small>
-    )}
+    <MintToken computer={computer}></MintToken><br />
+
     <div className="branding">
-      <small>This chat runs on the</small><br />
+      <small>This app runs on the</small><br />
       <small><a className="clear" href='http:/bitcoincomputer.io'>Bitcoin Computer</a></small><br />
-      <small><a className="clear" href='https://github.com/bitcoin-computer/bitcoin-chat'>Improve chat on Github</a></small>
+      <small><a className="clear" href='https://github.com/bitcoin-computer/example-fungible-token'>Improve app on Github</a></small>
     </div>
   </div>
 }

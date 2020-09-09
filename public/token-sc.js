@@ -8,6 +8,6 @@ class Token {
   send(amount, to) {
     if (this.coins < amount) throw new Error()
     this.coins -= amount
-    return new Token(amount, to)
+    return new Token(to, amount, this.name)
   }
 }

@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Computer from 'bitcoin-computer'
 import Wallet from './Wallet'
 import SideBar from './SideBar'
+import SendToken from './SendToken'
 import './App.css'
 import useInterval from './useInterval'
 
 function App() {
   const [computer, setComputer] = useState(null)
   const [tokens, setTokens] = useState([])
-  const [amountToMint, setAmountToMint] = useState(0)
-  const [amountToSend, setAmountToSend] = useState(0)
-  const [to, setTo] = useState('')
+  const [tokenBalance, setTokenBalance] = useState(0)
+
   const [chain, setChain] = useState('BSV')
 
   useInterval(() => {
@@ -42,26 +42,11 @@ function App() {
           async rev => computer.sync(rev))
         ))
 
-        setAmountToMint(tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0))
+        setTokenBalance(tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0))
       }
     }
     refresh()
   }, 3000)
-
-  const send = async (e) => {
-    e.preventDefault()
-    const tokenToSpend = tokens.find(token => {
-      console.log('token.coins', token.coins, 'amountToSend', amountToSend, token.coins >= amountToSend)
-      return parseInt(token.coins, 10) >= amountToSend
-    })
-    console.log('tokenToSpend', tokenToSpend)
-    if(tokenToSpend){
-      await tokenToSpend.send(amountToSend, to)
-      console.log('sent', amountToSend, 'from token with id', tokenToSpend._id)
-    } else {
-      alert('Insuficient funds')
-    }
-  }
 
   return (
     <Router>
@@ -72,17 +57,9 @@ function App() {
 
         <div className="main">
           <h3>Your Balance</h3>
-          {amountToMint}
+          {tokenBalance}
 
-          <h3>Send Token</h3>
-          <form onSubmit={send}>
-            Amount<br />
-            <input type="number" value={amountToSend} onChange={(e) => setAmountToSend(e.target.value)} /><br />
-            To<br />
-            <input type="string" value={to} onChange={(e) => setTo(e.target.value)} /><br />
-
-            <button type="submit">Send</button>
-          </form>
+          <SendToken computer={computer} tokens={tokens}></SendToken>
         </div>
       </div>
     </Router>

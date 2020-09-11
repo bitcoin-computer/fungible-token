@@ -1,28 +1,33 @@
 import React, { useState } from 'react'
 
 function SendToken({ computer, tokens }) {
-  const [amountToSend, setAmountToSend] = useState(0)
+  const [amount, setAmount] = useState(0)
   const [to, setTo] = useState('')
 
   const send = async (e) => {
     e.preventDefault()
-    const tokenToSpend = tokens.find(token => {
-      console.log('token.coins', token.coins, 'amountToSend', amountToSend, token.coins >= amountToSend)
-      return parseInt(token.coins, 10) >= amountToSend
-    })
-    console.log('tokenToSpend', tokenToSpend)
-    if (tokenToSpend) {
-      await tokenToSpend.send(amountToSend, to)
-      console.log('sent', amountToSend, 'from token with id', tokenToSpend._id)
-    } else {
-      alert('Insuficient funds')
+
+    const balance = tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0)
+    if(amount > balance) throw new Error('Insuficient Funds')
+
+    tokens.sort((a, b) => (a.coins - b.coins))
+    const newTokens = []
+    let leftToSpend = amount
+    for (const token of tokens) {
+      const tokenCoins = parseInt(token.coins, 10)
+      if (0 < leftToSpend && 0 < tokenCoins) {
+        newTokens.push(await token.send(Math.min(leftToSpend, tokenCoins), to))
+        leftToSpend -= tokenCoins
+      }
     }
+
+    console.log('Sent tokens\n', newTokens.map(token => `${token.coins} -> ${token._owners[0]}`).join('\n'))
   }
 
   return <><h3>Send Token</h3>
     <form onSubmit={send}>
       Amount<br />
-      <input type="number" value={amountToSend} onChange={(e) => setAmountToSend(e.target.value)} /><br />
+      <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} /><br />
             To<br />
       <input type="string" value={to} onChange={(e) => setTo(e.target.value)} /><br />
 

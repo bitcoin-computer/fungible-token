@@ -25,13 +25,22 @@ code {
   line-height: 1.5
 }
 
+.sidebar form {
+  width: 156px;
+}
+
 .main {
   margin: 40px 0px 5px 180px;
+}
+
+.main form {
+  width: calc(100vw - 204px)
 }
 
 .flex {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 textarea {
@@ -40,7 +49,7 @@ textarea {
 }
 
 input {
-  width: calc(100vw - 257px);
+  width: 100%;
   margin-right: 5px;
 }
 
@@ -70,4 +79,18 @@ input {
 .branding {
   position: absolute;
   bottom: 0;
+}
+
+button {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+button.small {
+  padding: 3px;
+  margin: 0;
+}
+
+select {
+  padding: 3px;
 }

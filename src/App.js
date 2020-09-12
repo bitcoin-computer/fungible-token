@@ -4,7 +4,6 @@ import Computer from 'bitcoin-computer'
 import Wallet from './Wallet'
 import SideBar from './SideBar'
 import SendToken from './SendToken'
-import './App.css'
 import useInterval from './useInterval'
 
 function App() {
@@ -51,7 +50,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* bind the value of chain stored in the state to the child component */}
         <Wallet computer={computer} chain={chain}></Wallet>
         <SideBar computer={computer} tokens={tokens} ></SideBar>
 

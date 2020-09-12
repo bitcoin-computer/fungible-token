@@ -24,39 +24,24 @@ function Login() {
     window.localStorage.removeItem('CHAIN')
   }
 
-  const toggleChain = (e) => {
-    e.preventDefault()
-    if (chain === 'BSV'){
-      //set the state for the value of the chain property here
-      setChain("BCH")
-      //assign the chosen chain to local storage for when the computer is init'd
-      window.localStorage.setItem('CHAIN', "BCH")
-    } else {
-      //set the state for the value of the chain property here
-      setChain("BSV")
-      //assign the chosen chain to local storage for when the computer is init'd
-      window.localStorage.setItem('CHAIN', "BSV")
-    }
-  }
-
   return loggedIn
-    ? <><button onClick={logout}>
+    ? <><button className="small" onClick={logout}>
         Logout
       </button><br /></>
     : <div className='login-screen'>
         <div id="">
           <div className="module center padding-left-24">
-            <h2 className="margin-auto"> Token Wallet - By Bitcoin Computer </h2>
-            {/* Use the state of this component to determine which button should be toggled */}
-           <button className={chain === 'BSV' ? 'button bsv-btn' : 'button empty-button'} onClick={toggleChain} > BSV </button>
-           <button className={chain === 'BCH' ? 'button bch-btn' : 'button empty-button'} onClick={toggleChain}> BCH </button>
+            <h2 className="margin-auto">Bitcoin Token Wallet</h2>
             <form onSubmit={login}>
+            <select value={chain} onChange={(e) => { setChain(e.target.value) }} id="chain">
+              <option value="BSV">BSV</option>
+              <option value="BCH">BCH</option>
+            </select><br />
             <input className="textbox" placeholder='User Name (anything)' type="string" value={username} onChange={(e) => setUsername(e.target.value)} /><br />
             <input className="textbox" placeholder='Password (BIP39 Generated Seed Phrase)' type="string" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
+            <a target="_blank" rel="noopener noreferrer" href='https://iancoleman.io/bip39/'>Generate BIP39 Seed Phrase</a><br />
             <button type="submit" className="button">Login</button>
-
           </form>
-          <div> Need A Seed (Password?) <a _target="blank" href='http://accounts.protoshi.com'>Click Here</a></div>
           </div>
         </div>
       </div>

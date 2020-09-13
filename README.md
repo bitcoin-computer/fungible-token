@@ -1,10 +1,8 @@
-# Bitcoin Chat
+# Bitcoin Token
 
-A hackable chat that runs on the bitcoin blockchain. Intended as a starting point for developpers to build on top of.
+A hackable token for BSV and BCH intended as a starting point for developpers to build on top of. It is build on the [Bitcoin Computer](http://bitcoincomputer.io) library.
 
-The chat needs no database backend because all data is stored on a Bitcoin blockchain (it currently runs on BSV testnet but we will add support for mainnet and BCH soon). The interface between the chat and the blockchain is provided by [Bitcoin Computer](http://bitcoincomputer.io)
-
-## Start the chat
+## Start the app
 
 Clone the repo and run
 
@@ -12,19 +10,17 @@ Clone the repo and run
 npm run start
 ````
 
-To log into the chat you need a BIP39 seed phrase, for exmple from the [Bitcoin SV Account Generator](http://bsv-account-generator.herokuapp.com/) built by [@DevelopingZack](https://twitter.com/developingzack). You then need to fund the wallet using a [Bitcoin SV faucet](https://faucet.bitcoincloud.net/)
+To log in you need a BIP39 seed phrase, for exmple from the [Bitcoin SV Account Generator](https://iancoleman.io/bip39/). You then need to fund the wallet using a [Bitcoin SV faucet](https://faucet.bitcoincloud.net/)
 
 For more information see the [Bitcoin Computer Docs](https://docs.bitcoincomputer.io/getting-started/run-in-a-browser) or ask in the [Telegram Group](https://t.me/joinchat/FMrjOUWRuUkNuIt7zJL8tg).
 
 ## Contributing
 
-The chat is very bare bones and contributions are more than welcome. Have a look at the open issues, or make a pull request with a new feature. You can also request a feature request by creating an issue.
+The app is very bare bones and contributions are more than welcome. Have a look at the open issues, or make a pull request with a new feature. You can also request a feature request by creating an issue.
 
-## Screenshots
+## Screenshot
 
-![login-screen](https://i.ibb.co/RzHdPMS/Screen-Shot-2020-08-29-at-20-03-04.png)
-
-![chat-screen](https://i.ibb.co/WDSCCvb/Screen-Shot-2020-08-29-at-20-02-59.png)
+![chat-screen](https://i.ibb.co/3TVTYrM/Screen-Shot-2020-09-13-at-14-47-44.png)
 
 # MIT Licence
 

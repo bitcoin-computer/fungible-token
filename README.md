@@ -20,7 +20,7 @@ class Token {
 }
 ````
 
-The constructor creates a new Token object that stored ``amount`` tokens and that is owned by ``to``. The send function first checks for insufficient funds. If the test passes a new object with ``number`` tokens is created and the amount in the current token is reduces by ``number``. This guarantees that the total number of tokens remains constant.
+The constructor creates a new Token object that stores ``amount`` tokens and that is owned by a public key ``to``. The send function first checks for insufficient funds. If the test passes a new object with ``number`` tokens is created and the amount in the current token is reduced by ``number``. This guarantees that the total number of tokens remains constant.
 
 ## Start the app
 

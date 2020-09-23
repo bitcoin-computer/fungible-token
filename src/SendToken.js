@@ -24,7 +24,7 @@ function SendToken({ computer, tokens }) {
     console.log('Sent tokens\n', newTokens.map(token => `${token.coins} -> ${token._owners[0]}`).join('\n'))
   }
 
-  return <><h3>Send Token</h3>
+  return <>
     <form onSubmit={send}>
       Amount<br />
       <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} /><br />

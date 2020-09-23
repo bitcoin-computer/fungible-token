@@ -2536,10 +2536,10 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bitcoin-computer@^0.3.4-beta:
-  version "0.3.4-beta"
-  resolved "https://registry.yarnpkg.com/bitcoin-computer/-/bitcoin-computer-0.3.4-beta.tgz#f3b14c00a6b2278ebe5b6422e936258845bfa6cf"
-  integrity sha512-WUC1xNOyWZrXhosOeD2dsQn2IAxKmw6vBqs3FYLdYTyX/SlQ8MNR2l4oxQo6f0vumGvmq67hF6ZLtgxW0pIbYA==
+bitcoin-computer@^0.4.0-beta:
+  version "0.4.0-beta"
+  resolved "https://registry.yarnpkg.com/bitcoin-computer/-/bitcoin-computer-0.4.0-beta.tgz#22d4f86f678717fc1b004571825fe943d03a6c2f"
+  integrity sha512-OD7JimuL0d+/Q4D4UDJUffy8zRwS+2B96++nAEBMq9eZxajub1aFgXCSUTdLMCJ84SuoY05QqqfW7xaBu/6Ppg==
   dependencies:
     axios "^0.18.0"
     bitcoinsource "^0.1.19"

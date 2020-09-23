@@ -12,28 +12,15 @@ code {
     monospace;
 }
 
-.sidebar {
-  margin: 68px 8px 8px 8px;
-  height: calc(100vh - 80px);
-  width: 165px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  overflow-x: hidden;
-  line-height: 1.5
-}
-
 .main {
   margin: 40px 0px 5px 180px;
 }
 
-.main form {
-  width: calc(100vw - 204px)
+.flex {
+  display: flex;
 }
 
-.flex {
+.flex-center {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,7 +102,7 @@ select {
   /* width: 80%; */
     width: 600px;
   max-width: 90%;
-    height: 400px;
+    height: 330px;
   max-height: 90%;
 }
 
@@ -132,4 +119,38 @@ select {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 190px;
+  margin: 10px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px 11px;
+}
+
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   line-height: 39px;
+}
+
+.footer > button {
+  margin: 5px;
 }

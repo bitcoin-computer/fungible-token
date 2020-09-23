@@ -26,11 +26,11 @@ function MintToken({ computer }) {
       isVisible && <div id="myModal" class="modal">
         <div class="modal-content">
           <span class="close" onClick={() => setVisible(false)}>&times;</span>
-          <h2>Mint Token</h2>
+          <h1>Mint</h1>
           <form onSubmit={mintToken}>
-            <small>Token Supply</small><br />
+            Token Supply<br />
             <input type="number" value={supply} onChange={(e) => setSupply(e.target.value)} /><br />
-            <small>Token Name</small><br />
+            Token Name<br />
             <input type="string" value={name} onChange={(e) => setName(e.target.value)} /><br />
             <button type="submit">Mint Token</button>
           </form>

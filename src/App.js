@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Computer from 'bitcoin-computer'
 import Wallet from './Wallet'
-import SideBar from './SideBar'
-import SendToken from './SendToken'
+import Login from './Login'
+import MintToken from './MintToken'
+import Card from './Card'
 import useInterval from './useInterval'
 
 function App() {
   const [computer, setComputer] = useState(null)
-  const [tokens, setTokens] = useState([])
-  const [tokenBalance, setTokenBalance] = useState(0)
-
+  const [objects, setObjects] = useState([])
   const [chain, setChain] = useState('BSV')
 
   useInterval(() => {
@@ -33,15 +32,21 @@ function App() {
     }
   }, 3000)
 
+  const groupByKey = (list, key) => list.reduce(
+    (acc, obj) => ({
+      ...acc,
+      [obj[key]]: (acc[obj[key]] || []).concat(obj)
+    }),
+    {}
+  )
+
   useInterval(() => {
     const refresh = async () => {
       if (computer) {
         const revs = await computer.getRevs(computer.db.wallet.getPublicKey().toString())
-        setTokens(await Promise.all(revs.map(
+        setObjects(await Promise.all(revs.map(
           async rev => computer.sync(rev))
         ))
-
-        setTokenBalance(tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0))
       }
     }
     refresh()
@@ -50,16 +55,19 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Wallet computer={computer} chain={chain}></Wallet>
-        <SideBar computer={computer} tokens={tokens} ></SideBar>
-
-        <div className="main">
-          <h3>Your Balance</h3>
-          {tokenBalance}
-
-          <SendToken computer={computer} tokens={tokens}></SendToken>
+        <div className="flex">
+          {Object.values(groupByKey(objects, '_rootId')).map(
+            tokens => <Card tokens={tokens}></Card>
+          )}
         </div>
       </div>
+
+      <div className="footer flex">
+        <MintToken computer={computer}></MintToken>
+        <Wallet computer={computer} chain={chain}></Wallet>
+        <Login ></Login>
+      </div>
+
     </Router>
   )
 }

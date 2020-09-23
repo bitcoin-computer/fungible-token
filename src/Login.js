@@ -25,9 +25,9 @@ function Login() {
   }
 
   return loggedIn
-    ? <><button className="small" onClick={logout}>
+    ? <><button onClick={logout}>
         Logout
-      </button><br /></>
+      </button></>
     : <div className='login-screen'>
         <div id="">
           <div className="module center padding-left-24">

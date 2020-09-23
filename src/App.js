@@ -10,6 +10,8 @@ import styled from 'styled-components'
 
 const Flex = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 `
 
 const Footer = styled.div`
@@ -31,32 +33,21 @@ function App() {
   const [chain, setChain] = useState('BSV')
 
   useInterval(() => {
-    // the BIP_39_KEY is set on login and we fetch it from local storage
+    // BIP_39_KEY & CHAIN is set on login and we fetch it from local storage
     const password = window.localStorage.getItem('BIP_39_KEY')
-    // the chain has also been stored in local storage on login, we need
-    // to store the chain in the state because we pass it to Wallet
     setChain(window.localStorage.getItem('CHAIN'))
 
     const isLoggedIn = password && chain
-
     // if you are currently logging in
     if (isLoggedIn && !computer){
       setComputer(new Computer({ chain, network: 'testnet', seed: password }))
-      console.log("Bitcoin Computer created on chain: " + chain)
+      console.log("Bitcoin Computer created on " + chain)
     // if you are currently logging out
     } else if (!isLoggedIn && computer){
       console.log("You have been logged out")
       setComputer(null)
     }
   }, 3000)
-
-  const groupByKey = (list, key) => list.reduce(
-    (acc, obj) => ({
-      ...acc,
-      [obj[key]]: (acc[obj[key]] || []).concat(obj)
-    }),
-    {}
-  )
 
   useInterval(() => {
     const refresh = async () => {
@@ -70,15 +61,21 @@ function App() {
     refresh()
   }, 3000)
 
+  const groupByRoot = (list) => list.reduce(
+    (acc, obj) => ({
+      ...acc,
+      [obj['_rootId']]: (acc[obj['_rootId']] || []).concat(obj)
+    }),
+    {}
+  )
+
   return (
     <Router>
-      <div className="App">
-        <Flex>
-          {Object.values(groupByKey(objects, '_rootId')).map(
-            tokens => <Card tokens={tokens}></Card>
-          )}
-        </Flex>
-      </div>
+      <Flex>
+        {Object.values(groupByRoot(objects)).map(
+          tokens => <Card tokens={tokens}></Card>
+        )}
+      </Flex>
 
       <Footer>
         <MintToken computer={computer}></MintToken>

@@ -22,7 +22,7 @@ function MintToken({ computer }) {
 
   }
   return <>
-    <button onClick={() => setVisible(true)}>Mint Token</button>
+    <button onClick={() => setVisible(true)}>Mint</button>
     {
       isVisible && <Modal>
         <ModalContent>
@@ -33,7 +33,7 @@ function MintToken({ computer }) {
             <input type="number" value={supply} onChange={(e) => setSupply(e.target.value)} /><br />
             Token Name<br />
             <input type="string" value={name} onChange={(e) => setName(e.target.value)} /><br />
-            <button type="submit">Mint Token</button>
+            <button type="submit">Mint</button>
           </form>
         </ModalContent>
       </Modal>

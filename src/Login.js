@@ -1,5 +1,29 @@
 import React, { useState } from 'react'
 import useInterval from './useInterval'
+import styled from 'styled-components'
+
+const LoginScreen = styled.div`
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    width: 400px;
+    margin: 5px 0;
+  }
+
+  button {
+    width: 100px;
+    margin: 5px 0;
+  }
+`
 
 function Login() {
   const [password, setPassword] = useState('')
@@ -28,7 +52,7 @@ function Login() {
     ? <><button onClick={logout}>
         Logout
       </button></>
-    : <div className='login-screen'>
+    : <LoginScreen>
         <div id="">
           <div className="module center padding-left-24">
             <h2 className="margin-auto">Bitcoin Token Wallet</h2>
@@ -44,7 +68,7 @@ function Login() {
           </form>
           </div>
         </div>
-      </div>
+    </LoginScreen>
 }
 
 export default Login

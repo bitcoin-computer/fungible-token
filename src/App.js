@@ -6,6 +6,24 @@ import Login from './Login'
 import MintToken from './MintToken'
 import Card from './Card'
 import useInterval from './useInterval'
+import styled from 'styled-components'
+
+const Flex = styled.div`
+  display: flex;
+`
+
+const Footer = styled.div`
+    display: flex;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   line-height: 39px;
+
+   & > button {
+      margin: 5px;
+   }
+`
 
 function App() {
   const [computer, setComputer] = useState(null)
@@ -55,19 +73,18 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div className="flex">
+        <Flex>
           {Object.values(groupByKey(objects, '_rootId')).map(
             tokens => <Card tokens={tokens}></Card>
           )}
-        </div>
+        </Flex>
       </div>
 
-      <div className="footer flex">
+      <Footer>
         <MintToken computer={computer}></MintToken>
         <Wallet computer={computer} chain={chain}></Wallet>
         <Login ></Login>
-      </div>
-
+      </Footer>
     </Router>
   )
 }

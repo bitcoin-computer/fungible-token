@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Utils from './utils'
+import { Modal, ModalContent, Close } from './Modal'
 
 function MintToken({ computer }) {
   const [supply, setSupply] = useState(0)
@@ -23,9 +24,9 @@ function MintToken({ computer }) {
   return <>
     <button onClick={() => setVisible(true)}>Mint Token</button>
     {
-      isVisible && <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close" onClick={() => setVisible(false)}>&times;</span>
+      isVisible && <Modal>
+        <ModalContent>
+          <Close onClick={() => setVisible(false)}>&times;</Close>
           <h1>Mint</h1>
           <form onSubmit={mintToken}>
             Token Supply<br />
@@ -34,8 +35,8 @@ function MintToken({ computer }) {
             <input type="string" value={name} onChange={(e) => setName(e.target.value)} /><br />
             <button type="submit">Mint Token</button>
           </form>
-        </div>
-      </div>
+        </ModalContent>
+      </Modal>
     }
   </>
 }

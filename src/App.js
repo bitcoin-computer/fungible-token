@@ -74,7 +74,7 @@ function App() {
       </Header>
       <Flex>
         {Object.values(groupByRoot(objects)).map(
-          tokens => <Card tokens={tokens}></Card>
+          tokens => <Card key={tokens[0]._id} tokens={tokens}></Card>
         ) || 'hi'}
       </Flex>
     </Router>

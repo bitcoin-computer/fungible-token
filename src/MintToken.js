@@ -16,13 +16,12 @@ function MintToken({ computer }) {
       const publicKey = computer.db.wallet.getPublicKey().toString()
       const TokenSc= await Utils.importFromPublic('/token-sc.js')
       const token = await computer.new(TokenSc, [publicKey, supply, name])
-      alert(`Minted ${supply} tokens.`)
-      console.log(`Minted ${supply} tokens ${token._id}`)
+      setVisible(false)
+      console.log(`Minted ${token.name} with supply ${supply} and id ${token._id}`)
     } catch (err) {
       if(err.message.startsWith('Insufficient balance in address'))
         alert(`You need testnet coins to mint a token. To get free testnet coins open the your wallet.`)
     }
-
   }
   return <>
     <button onClick={() => setVisible(true)}>Mint</button>

@@ -11,20 +11,16 @@ import styled from 'styled-components'
 const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 40px;
 `
 
-const Footer = styled.div`
-    display: flex;
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   line-height: 39px;
+const Header = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
 
-   & > button {
-      margin: 5px;
-   }
+  & > button {
+    margin: 5px;
+  }
 `
 
 function App() {
@@ -71,17 +67,16 @@ function App() {
 
   return (
     <Router>
-      <Flex>
-        {Object.values(groupByRoot(objects)).map(
-          tokens => <Card tokens={tokens}></Card>
-        )}
-      </Flex>
-
-      <Footer>
+      <Header>
         <MintToken computer={computer}></MintToken>
         <Wallet computer={computer} chain={chain}></Wallet>
         <Login ></Login>
-      </Footer>
+      </Header>
+      <Flex>
+        {Object.values(groupByRoot(objects)).map(
+          tokens => <Card tokens={tokens}></Card>
+        ) || 'hi'}
+      </Flex>
     </Router>
   )
 }

@@ -22,6 +22,8 @@ class Token {
 
 The constructor creates a new Token object that stores ``amount`` tokens and that is owned by a public key ``to``. The send function first checks for insufficient funds. If the test passes a new object with ``number`` tokens is created and the amount in the current token is reduced by ``number``. This guarantees that the total number of tokens remains constant.
 
+You can find more information in the accompanying Medium Article.
+
 ## Start the app
 
 Clone the repo and run
@@ -40,7 +42,7 @@ The app is very bare bones and contributions are more than welcome. Have a look 
 
 ## Screenshot
 
-![chat-screen](https://i.ibb.co/3TVTYrM/Screen-Shot-2020-09-13-at-14-47-44.png)
+![chat-screen](https://i.ibb.co/hMqsDjQ/Screen-Shot-2020-09-23-at-00-16-18.png)
 
 # MIT Licence
 

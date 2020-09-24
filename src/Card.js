@@ -25,15 +25,19 @@ const AlignRight = styled.p`
 	float: right;
 `
 
+const ClearBoth = styled.div`
+  clear: both
+`
+
 function Card({ tokens, computer }) {
   const [ first ] = tokens
   const balance = tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0)
 
-  return <CardStyle style={{ backgroundColor: `#${first._rootId.slice(0,6)}` }}>
+   return <CardStyle style={{ backgroundColor: `#${first._rootId.slice(0, 6)}` }}>
       <Container>
-        <AlignLeft><b>{first.name}</b></AlignLeft>
+       <AlignLeft><b>{first.name}</b></AlignLeft>
         <AlignRight>{balance}</AlignRight>
-        <div style={{ clear: "both" }}></div>
+        <ClearBoth></ClearBoth>
         <SendToken tokens={tokens} computer={computer}></SendToken>
       </Container>
     </CardStyle>

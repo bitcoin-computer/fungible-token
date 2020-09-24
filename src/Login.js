@@ -15,7 +15,7 @@ const LoginScreen = styled.div`
   align-items: center;
 
   input {
-    width: 400px;
+    width: 320px;
     margin: 5px 0;
   }
 

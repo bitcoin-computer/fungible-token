@@ -20,7 +20,7 @@ function MintToken({ computer }) {
       console.log(`Minted ${token.name} with supply ${supply} and id ${token._id}`)
     } catch (err) {
       if(err.message.startsWith('Insufficient balance in address'))
-        alert(`You need testnet coins to mint a token. To get free testnet coins open the your wallet.`)
+        alert(`You need testnet coins to mint a token. To get free testnet coins open the your wallet. If you have just made a deposit you might have to reload the browser.`)
     }
   }
   return <>

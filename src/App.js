@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Computer from 'bitcoin-computer'
+import { Computer } from 'bitcoin-computer'
 import Wallet from './Wallet'
 import Login from './Login'
 import MintToken from './MintToken'

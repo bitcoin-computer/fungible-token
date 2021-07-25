@@ -29,7 +29,7 @@ const ClearBoth = styled.div`
   clear: both;
 `
 
-function Card({ tokens, computer }) {
+const Card: React.FC = ({ tokens }: { tokens: unknown[] }) => {
   const [first] = tokens
   const balance = tokens.reduce(
     (acc, token) => acc + parseInt(token.coins, 10),
@@ -44,7 +44,7 @@ function Card({ tokens, computer }) {
         </AlignLeft>
         <AlignRight>{balance}</AlignRight>
         <ClearBoth></ClearBoth>
-        <SendToken tokens={tokens} computer={computer}></SendToken>
+        <SendToken tokens={tokens}></SendToken>
       </Container>
     </CardStyle>
   )

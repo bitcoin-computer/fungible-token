@@ -15,7 +15,7 @@ const LoginScreen = styled.div`
   align-items: center;
 `
 
-function Login() {
+const Login: React.FC = () => {
   const [password, setPassword] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
   const [chain, setChain] = useState('BSV')
@@ -30,7 +30,7 @@ function Login() {
     window.localStorage.setItem('CHAIN', chain)
   }
 
-  const logout = (e) => {
+  const logout = () => {
     window.localStorage.removeItem('BIP_39_KEY')
     window.localStorage.removeItem('USER_NAME')
     window.localStorage.removeItem('CHAIN')
@@ -45,7 +45,7 @@ function Login() {
       <div id="">
         <div className="module center padding-left-24">
           <h2 className="margin-auto">Bitcoin Token</h2>
-          <p>Don't forget to write down your seed.</p>
+          <p>Don&apos;t forget to write down your seed.</p>
           <small>
             <a
               target="_blank"

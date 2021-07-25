@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import Utils from './utils'
 import { Modal, ModalContent, Close } from './Modal'
 import styled from 'styled-components'
+import type { Computer } from 'bitcoin-computer'
 
 const Input = styled.input`
   width: 590px;
 `
 
-function MintToken({ computer }) {
+const MintToken: React.FC = ({ computer }: { computer: Computer }) => {
   const [supply, setSupply] = useState(0)
   const [name, setName] = useState('')
   const [isVisible, setVisible] = useState(false)

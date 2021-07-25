@@ -23,7 +23,7 @@ const Header = styled.div`
   }
 `
 
-function App() {
+const App: React.FC = () => {
   const [computer, setComputer] = useState(null)
   const [objects, setObjects] = useState([])
   const [chain, setChain] = useState('BSV')

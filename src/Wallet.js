@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
 import useInterval from './useInterval'
 import { Modal, ModalContent, Close } from './Modal'
+import type { Computer } from 'bitcoin-computer'
 
-function Wallet({ computer, chain }) {
+const Wallet: React.FC = ({
+  computer,
+  chain,
+}: {
+  computer: Computer,
+  chain: string,
+}) => {
   const [balance, setBalance] = useState(0)
   const [isVisible, setVisible] = useState(false)
 

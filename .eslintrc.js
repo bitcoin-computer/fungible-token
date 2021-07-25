@@ -32,4 +32,9 @@ module.exports = {
           version: "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
+  rules: {
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"]
+  },
+  ignorePatterns: ["serviceWorker.js"],
 };

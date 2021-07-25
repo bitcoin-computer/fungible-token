@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function SendToken({ computer, tokens }) {
+const SendToken: React.FC = ({ tokens }: { tokens: unknown[] }) => {
   const [amount, setAmount] = useState(0)
   const [to, setTo] = useState('')
 

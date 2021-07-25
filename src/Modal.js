@@ -10,8 +10,8 @@ export const Modal = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 `
 
 export const ModalContent = styled.div`
@@ -20,9 +20,9 @@ export const ModalContent = styled.div`
   padding: 20px;
   border: 1px solid #888;
   /* width: 80%; */
-    width: 600px;
+  width: 600px;
   max-width: 90%;
-    height: 330px;
+  height: 330px;
   max-height: 90%;
 `
 
@@ -32,7 +32,8 @@ export const Close = styled.span`
   font-size: 28px;
   font-weight: bold;
 
-  &:hover, &focus {
+  &:hover,
+  &focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

@@ -35,12 +35,12 @@ function App() {
 
     const isLoggedIn = password && chain
     // if you are currently logging in
-    if (isLoggedIn && !computer){
+    if (isLoggedIn && !computer) {
       setComputer(new Computer({ chain, network: 'testnet', seed: password }))
-      console.log("Bitcoin Computer created on " + chain)
-    // if you are currently logging out
-    } else if (!isLoggedIn && computer){
-      console.log("You have been logged out")
+      console.log('Bitcoin Computer created on ' + chain)
+      // if you are currently logging out
+    } else if (!isLoggedIn && computer) {
+      console.log('You have been logged out')
       setComputer(null)
     }
   }, 3000)
@@ -48,34 +48,37 @@ function App() {
   useInterval(() => {
     const refresh = async () => {
       if (computer) {
-        const revs = await computer.getRevs(computer.db.wallet.getPublicKey().toString())
-        setObjects(await Promise.all(revs.map(
-          async rev => computer.sync(rev))
-        ))
+        const revs = await computer.getRevs(
+          computer.db.wallet.getPublicKey().toString()
+        )
+        setObjects(
+          await Promise.all(revs.map(async (rev) => computer.sync(rev)))
+        )
       }
     }
     refresh()
   }, 3000)
 
-  const groupByRoot = (list) => list.reduce(
-    (acc, obj) => ({
-      ...acc,
-      [obj['_rootId']]: (acc[obj['_rootId']] || []).concat(obj)
-    }),
-    {}
-  )
+  const groupByRoot = (list) =>
+    list.reduce(
+      (acc, obj) => ({
+        ...acc,
+        [obj['_rootId']]: (acc[obj['_rootId']] || []).concat(obj),
+      }),
+      {}
+    )
 
   return (
     <Router>
       <Header>
         <MintToken computer={computer}></MintToken>
         <Wallet computer={computer} chain={chain}></Wallet>
-        <Login ></Login>
+        <Login></Login>
       </Header>
       <Flex>
-        {Object.values(groupByRoot(objects)).map(
-          tokens => <Card key={tokens[0]._id} tokens={tokens}></Card>
-        ) || 'hi'}
+        {Object.values(groupByRoot(objects)).map((tokens) => (
+          <Card key={tokens[0]._id} tokens={tokens}></Card>
+        )) || 'hi'}
       </Flex>
     </Router>
   )

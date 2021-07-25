@@ -7,10 +7,13 @@ function SendToken({ computer, tokens }) {
   const send = async (e) => {
     e.preventDefault()
 
-    const balance = tokens.reduce((acc, token) => acc + parseInt(token.coins, 10), 0)
-    if(amount > balance) throw new Error('Insuficient Funds')
+    const balance = tokens.reduce(
+      (acc, token) => acc + parseInt(token.coins, 10),
+      0
+    )
+    if (amount > balance) throw new Error('Insuficient Funds')
 
-    tokens.sort((a, b) => (a.coins - b.coins))
+    tokens.sort((a, b) => a.coins - b.coins)
     const newTokens = []
     let leftToSpend = amount
     for (const token of tokens) {
@@ -21,18 +24,37 @@ function SendToken({ computer, tokens }) {
       }
     }
 
-    console.log('Sent tokens\n', newTokens.map(token => `${token.coins} -> ${token._owners[0]}`).join('\n'))
+    console.log(
+      'Sent tokens\n',
+      newTokens
+        .map((token) => `${token.coins} -> ${token._owners[0]}`)
+        .join('\n')
+    )
   }
 
-  return <>
-    <form onSubmit={send}>
-      Amount<br />
-      <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} /><br />
-            To<br />
-      <input type="string" value={to} onChange={(e) => setTo(e.target.value)} /><br />
-
-      <button type="submit">Send</button>
-    </form></>
+  return (
+    <>
+      <form onSubmit={send}>
+        Amount
+        <br />
+        <input
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+        <br />
+        To
+        <br />
+        <input
+          type="string"
+          value={to}
+          onChange={(e) => setTo(e.target.value)}
+        />
+        <br />
+        <button type="submit">Send</button>
+      </form>
+    </>
+  )
 }
 
 export default SendToken

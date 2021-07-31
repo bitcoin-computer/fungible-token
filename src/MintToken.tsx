@@ -3,17 +3,22 @@ import Utils from './utils'
 import { Modal, ModalContent, Close } from './Modal'
 import styled from 'styled-components'
 import type { Computer } from 'bitcoin-computer'
+import PropTypes from 'prop-types'
 
 const Input = styled.input`
   width: 590px;
 `
 
-const MintToken: React.FC = ({ computer }: { computer: Computer }) => {
+export interface IMintTokenProps {
+  computer: typeof Computer
+}
+
+const MintToken: React.FC<IMintTokenProps> = ({ computer }) => {
   const [supply, setSupply] = useState(0)
   const [name, setName] = useState('')
   const [isVisible, setVisible] = useState(false)
 
-  const mintToken = async (e) => {
+  const mintToken = async (e: React.SyntheticEvent) => {
     try {
       e.preventDefault()
       const publicKey = computer.db.wallet.getPublicKey().toString()
@@ -44,7 +49,7 @@ const MintToken: React.FC = ({ computer }: { computer: Computer }) => {
               <Input
                 type="number"
                 value={supply}
-                onChange={(e) => setSupply(e.target.value)}
+                onChange={(e) => setSupply(parseInt(e.target.value))}
               />
               <br />
               <br />
@@ -64,6 +69,10 @@ const MintToken: React.FC = ({ computer }: { computer: Computer }) => {
       )}
     </>
   )
+}
+
+MintToken.propTypes = {
+  computer: PropTypes.object,
 }
 
 export default MintToken

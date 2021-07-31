@@ -1,6 +1,8 @@
 import React from 'react'
 import SendToken from './SendToken'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { TokenType } from './types'
 
 const CardStyle = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -29,7 +31,11 @@ const ClearBoth = styled.div`
   clear: both;
 `
 
-const Card: React.FC = ({ tokens }: { tokens: unknown[] }) => {
+export interface ICardProps {
+  tokens: TokenType[]
+}
+
+const Card: React.FC<ICardProps> = ({ tokens }) => {
   const [first] = tokens
   const balance = tokens.reduce(
     (acc, token) => acc + parseInt(token.coins, 10),
@@ -48,6 +54,10 @@ const Card: React.FC = ({ tokens }: { tokens: unknown[] }) => {
       </Container>
     </CardStyle>
   )
+}
+
+Card.propTypes = {
+  tokens: PropTypes.array.isRequired,
 }
 
 export default Card

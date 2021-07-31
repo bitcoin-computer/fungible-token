@@ -24,7 +24,7 @@ const Login: React.FC = () => {
     setLoggedIn(!!window.localStorage.getItem('BIP_39_KEY'))
   }, 500)
 
-  const login = (e) => {
+  const login = (e: React.SyntheticEvent) => {
     e.preventDefault()
     window.localStorage.setItem('BIP_39_KEY', password)
     window.localStorage.setItem('CHAIN', chain)

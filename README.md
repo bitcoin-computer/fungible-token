@@ -1,8 +1,8 @@
 # Bitcoin Token
 
-A hackable token for BSV and BCH. Intended as a starting point for developpers to build on top of. Build on the [Bitcoin Computer](http://bitcoincomputer.io) library.
+A hackable token for BSV and BCH. Intended as a starting point for developers to build on top of. Build on the [Bitcoin Computer](http://bitcoincomputer.io) library.
 
-The smart contract itself could not be simpler
+The smart contract itself could not be simpler:
 
 ````
 class Token {
@@ -20,9 +20,9 @@ class Token {
 }
 ````
 
-The constructor creates a new Token object that stores ``amount`` tokens and that is owned by a public key ``to``. The send function first checks for insufficient funds. If the test passes a new object with ``number`` tokens is created and the amount in the current token is reduced by ``number``. This guarantees that the total number of tokens remains constant.
+The constructor creates a new Token object that stores ``amount`` tokens and that is owned by a public key ``to``. The send function first checks for insufficient funds. If there are sufficient funds, a new object with ``number`` tokens is created and the amount in the current token is reduced by ``number``. As this is the only way to update the amount of a token this guarantees that the total number of tokens remains constant.
 
-You can find more information in the accompanying Medium Article.
+You can find more information in the accompanying [Medium Article](https://medium.com/@clemensley/how-to-build-a-token-on-bitcoin-in-javascript-c2439cf1b273).
 
 ## Start the app
 

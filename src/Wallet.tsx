@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import useInterval from './useInterval'
 import { Modal, ModalContent, Close } from './Modal'
 import type { Computer } from 'bitcoin-computer'
+import PropTypes from 'prop-types'
 
-const Wallet: React.FC = ({
-  computer,
-  chain,
-}: {
-  computer: Computer,
-  chain: string,
-}) => {
+export interface IWalletProps {
+  computer: typeof Computer
+  chain: string
+}
+
+const Wallet: React.FC<IWalletProps> = ({ computer, chain }) => {
   const [balance, setBalance] = useState(0)
   const [isVisible, setVisible] = useState(false)
 
@@ -65,6 +65,11 @@ const Wallet: React.FC = ({
       )}
     </>
   )
+}
+
+Wallet.propTypes = {
+  computer: PropTypes.object,
+  chain: PropTypes.string.isRequired,
 }
 
 export default Wallet

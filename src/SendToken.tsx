@@ -1,20 +1,26 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { TokenType } from './types'
 
-const SendToken: React.FC = ({ tokens }: { tokens: unknown[] }) => {
+export interface ISendTokenProps {
+  tokens: TokenType[]
+}
+
+const SendToken: React.FC<ISendTokenProps> = ({ tokens }) => {
   const [amount, setAmount] = useState(0)
   const [to, setTo] = useState('')
 
-  const send = async (e) => {
+  const send = async (e: React.SyntheticEvent) => {
     e.preventDefault()
 
     const balance = tokens.reduce(
       (acc, token) => acc + parseInt(token.coins, 10),
       0
     )
-    if (amount > balance) throw new Error('Insuficient Funds')
+    if (amount > balance) throw new Error('Insufficient Funds')
 
-    tokens.sort((a, b) => a.coins - b.coins)
-    const newTokens = []
+    tokens.sort((a, b) => parseInt(a.coins, 10) - parseInt(b.coins, 10))
+    const newTokens: TokenType[] = []
     let leftToSpend = amount
     for (const token of tokens) {
       const tokenCoins = parseInt(token.coins, 10)
@@ -40,7 +46,7 @@ const SendToken: React.FC = ({ tokens }: { tokens: unknown[] }) => {
         <input
           type="number"
           value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={(e) => setAmount(parseInt(e.target.value))}
         />
         <br />
         To
@@ -55,6 +61,10 @@ const SendToken: React.FC = ({ tokens }: { tokens: unknown[] }) => {
       </form>
     </>
   )
+}
+
+SendToken.propTypes = {
+  tokens: PropTypes.array.isRequired,
 }
 
 export default SendToken

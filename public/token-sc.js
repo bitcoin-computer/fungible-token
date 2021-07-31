@@ -1,4 +1,4 @@
-class Token {
+export default class Token {
   constructor(to, supply, name) {
     this.coins = supply
     this._owners = [to]

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { Computer } from 'bitcoin-computer'
+import { Computer } from 'bitcoin-computer-lib'
 import Wallet from './Wallet'
 import Login from './Login'
 import MintToken from './MintToken'
@@ -27,7 +27,7 @@ const Header = styled.div`
 const App: React.FC = () => {
   const [computer, setComputer] = useState<typeof Computer>(null)
   const [objects, setObjects] = useState<TokenType[]>([])
-  const [chain, setChain] = useState('BSV')
+  const [chain, setChain] = useState('LTC')
 
   useInterval(() => {
     // BIP_39_KEY & CHAIN is set on login and we fetch it from local storage
@@ -37,7 +37,7 @@ const App: React.FC = () => {
     const isLoggedIn = password && chain
     // if you are currently logging in
     if (isLoggedIn && !computer) {
-      setComputer(new Computer({ chain, network: 'testnet', seed: password }))
+      setComputer(new Computer({ seed: password }))
       console.log('Bitcoin Computer created on ' + chain)
       // if you are currently logging out
     } else if (!isLoggedIn && computer) {

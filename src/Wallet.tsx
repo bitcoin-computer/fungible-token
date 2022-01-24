@@ -34,17 +34,9 @@ const Wallet: React.FC<IWalletProps> = ({ computer, chain }) => {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="http://faucet.bitcoincloud.net"
+                  href="https://testnet-faucet.com/ltc-testnet/"
                 >
-                  BSV Faucet
-                </a>{' '}
-                or a{' '}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="http://faucet.fullstack.cash"
-                >
-                  BCH Faucet
+                  LTC Faucet
                 </a>{' '}
                 to fund your wallet.
               </p>

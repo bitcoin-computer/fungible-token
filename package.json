@@ -11,7 +11,7 @@
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.11",
-    "bitcoin-computer-lib": "^0.5.2-beta",
+    "bitcoin-computer-lib": "^0.7.0-beta",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

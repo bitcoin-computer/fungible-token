@@ -1,6 +1,6 @@
 # Bitcoin Token
 
-A hackable token for BSV and BCH. Intended as a starting point for developers to build on top of. Build on the [Bitcoin Computer](http://bitcoincomputer.io) library.
+A hackable token for LTC. Intended as a starting point for developers to build on top of. Build on the [Bitcoin Computer](http://bitcoincomputer.io) library.
 
 The smart contract itself could not be simpler:
 
@@ -32,7 +32,7 @@ Clone the repo and run
 npm run start
 ````
 
-To log in you need a BIP39 seed phrase, for exmple from the [Bitcoin SV Account Generator](https://iancoleman.io/bip39/). You then need to fund the wallet using a [Bitcoin SV faucet](https://faucet.bitcoincloud.net/)
+To log in you need a BIP39 seed phrase. You can generate a new seed for example from [here](https://iancoleman.io/bip39/). You then need to fund the wallet using a [LTC faucet](https://testnet-faucet.com/ltc-testnet/)
 
 For more information see the [Bitcoin Computer Docs](https://docs.bitcoincomputer.io/getting-started/run-in-a-browser) or ask in the [Telegram Group](https://t.me/joinchat/FMrjOUWRuUkNuIt7zJL8tg).
 

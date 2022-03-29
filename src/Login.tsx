@@ -18,7 +18,7 @@ const LoginScreen = styled.div`
 const Login: React.FC = () => {
   const [password, setPassword] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
-  const [chain, setChain] = useState('BSV')
+  const [chain, setChain] = useState('LTC')
 
   useInterval(() => {
     setLoggedIn(!!window.localStorage.getItem('BIP_39_KEY'))

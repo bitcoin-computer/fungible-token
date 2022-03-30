@@ -18,7 +18,7 @@ const LoginScreen = styled.div`
 const Login: React.FC = () => {
   const [password, setPassword] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
-  const [chain, setChain] = useState('BSV')
+  const [chain, setChain] = useState('LTC')
 
   useInterval(() => {
     setLoggedIn(!!window.localStorage.getItem('BIP_39_KEY'))
@@ -71,8 +71,7 @@ const Login: React.FC = () => {
               }}
               id="chain"
             >
-              <option value="BSV">BSV</option>
-              <option value="BCH">BCH</option>
+              <option value="LTC">LTC</option>
             </select>
             <button type="submit" className="button">
               Login

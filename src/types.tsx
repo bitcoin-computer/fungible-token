@@ -4,7 +4,7 @@ export type TokenType = {
   send: (amount: number, to: string) => TokenType
   _id: string
   _rev: string
-  _rootId: string
+  _root: string
   _owners: string[]
   _amount: string[]
 }

@@ -43,7 +43,7 @@ const Card: React.FC<ICardProps> = ({ tokens }) => {
   )
 
   return (
-    <CardStyle style={{ backgroundColor: `#${first._rootId.slice(0, 6)}` }}>
+    <CardStyle style={{ backgroundColor: `#${first._root.slice(0, 6)}` }}>
       <Container>
         <AlignLeft>
           <b>{first.name}</b>

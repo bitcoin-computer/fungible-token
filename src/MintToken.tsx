@@ -46,9 +46,9 @@ const MintToken: React.FC<IMintTokenProps> = ({ computer }) => {
 
   const clicked = () => {
     setVisible(true)
-    // if (computer.db.wallet.getBalance() === 0){
-    //   alert('Wallet has zero balance, please fund the wallet first.')
-    // }
+    if (computer.db.wallet.getBalance() === 0){
+      alert('Wallet has zero balance, please fund the wallet first.')
+    }
   }
 
   return (

@@ -16,9 +16,11 @@ const Flex = styled.div`
 
 const Header = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
   margin: 5px;
-
   & > button {
     margin: 5px;
   }

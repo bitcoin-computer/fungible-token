@@ -5,6 +5,14 @@ import styled from 'styled-components'
 import type { Computer } from 'bitcoin-computer'
 import PropTypes from 'prop-types'
 
+const Button = styled.button`
+  color: black;
+  font-size: 20px;
+  padding: 20px 60px;
+  cursor: pointer;
+`
+
+
 const Input = styled.input`
   width: 590px;
 `
@@ -17,7 +25,7 @@ const MintToken: React.FC<IMintTokenProps> = ({ computer }) => {
   const [supply, setSupply] = useState(0)
   const [name, setName] = useState('')
   const [isVisible, setVisible] = useState(false)
-
+ 
   const mintToken = async (e: React.SyntheticEvent) => {
     try {
       e.preventDefault()
@@ -35,10 +43,18 @@ const MintToken: React.FC<IMintTokenProps> = ({ computer }) => {
         )
     }
   }
+
+  const clicked = () => {
+    setVisible(true)
+    // if (computer.db.wallet.getBalance() === 0){
+    //   alert('Wallet has zero balance, please fund the wallet first.')
+    // }
+  }
+
   return (
     <>
-      <button onClick={() => setVisible(true)}>Mint</button>
-      {isVisible && (
+    <Button onClick={() => clicked()}>Mint</Button>
+    {isVisible && (
         <Modal>
           <ModalContent>
             <Close onClick={() => setVisible(false)}>&times;</Close>

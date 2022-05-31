@@ -14,6 +14,13 @@ const LoginScreen = styled.div`
   justify-content: center;
   align-items: center;
 `
+const Button = styled.button`
+  color: black;
+  font-size: 20px;
+  padding: 20px 48px;
+  border-radius: 5px;
+  cursor: pointer;
+`
 
 const Login: React.FC = () => {
   const [password, setPassword] = useState('')
@@ -38,7 +45,7 @@ const Login: React.FC = () => {
 
   return loggedIn ? (
     <>
-      <button onClick={logout}>Logout</button>
+      <Button onClick={logout}>Logout</Button>
     </>
   ) : (
     <LoginScreen>

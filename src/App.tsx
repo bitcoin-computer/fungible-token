@@ -16,9 +16,11 @@ const Flex = styled.div`
 
 const Header = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
   margin: 5px;
-
   & > button {
     margin: 5px;
   }
@@ -40,12 +42,12 @@ const App: React.FC = () => {
       setComputer(new Computer({ 
         seed: password,
         chain: 'LTC',
-        url: 'https://node.bitcoincomputer.io',
-        network: 'testnet'
+        // url: 'https://node.bitcoincomputer.io',
+        // network: 'testnet'
 
         // To run locally on regtest, uncomment the following lines:
-        // url: 'http://127.0.0.1:3000',
-        // network: 'regtest' 
+        url: 'http://127.0.0.1:3000',
+        network: 'regtest' 
       }))
       console.log('Bitcoin Computer created on ' + chain)
       // if you are currently logging out

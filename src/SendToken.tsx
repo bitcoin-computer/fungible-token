@@ -7,7 +7,7 @@ export interface ISendTokenProps {
 }
 
 const SendToken: React.FC<ISendTokenProps> = ({ tokens }) => {
-  const [amount, setAmount] = useState(0)
+  const [amountString, setAmountString] = useState('')
   const [to, setTo] = useState('')
 
   const send = async (e: React.SyntheticEvent) => {
@@ -17,6 +17,7 @@ const SendToken: React.FC<ISendTokenProps> = ({ tokens }) => {
       (acc, token) => acc + parseInt(token.coins, 10),
       0
     )
+    const amount = parseInt(amountString)
     if (amount > balance) throw new Error('Insufficient Funds')
 
     tokens.sort((a, b) => parseInt(a.coins, 10) - parseInt(b.coins, 10))
@@ -44,9 +45,9 @@ const SendToken: React.FC<ISendTokenProps> = ({ tokens }) => {
         Amount
         <br />
         <input
-          type="number"
-          value={amount}
-          onChange={(e) => setAmount(parseInt(e.target.value))}
+          type="string"
+          value={amountString}
+          onChange={(e) => setAmountString(e.target.value)}
         />
         <br />
         To

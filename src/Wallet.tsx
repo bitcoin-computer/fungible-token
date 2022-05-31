@@ -15,7 +15,7 @@ const Wallet: React.FC<IWalletProps> = ({ computer, chain }) => {
 
   useInterval(() => {
     const getBalance = async () => {
-      if (computer) setBalance(await computer.db.wallet.getBalance())
+      if (computer) setBalance(await computer?.db?.wallet.getBalance())
     }
     getBalance()
   }, 3000)

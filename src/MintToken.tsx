@@ -14,7 +14,7 @@ export interface IMintTokenProps {
 }
 
 const MintToken: React.FC<IMintTokenProps> = ({ computer }) => {
-  const [supply, setSupply] = useState(0)
+  const [supplyString, setSupplyString] = useState('')
   const [name, setName] = useState('')
   const [isVisible, setVisible] = useState(false)
 
@@ -23,12 +23,14 @@ const MintToken: React.FC<IMintTokenProps> = ({ computer }) => {
       e.preventDefault()
       const publicKey = computer.db.wallet.getPublicKey().toString()
       const TokenSc = await Utils.importFromPublic('/token-sc.js')
+      const supply = parseInt(supplyString)
       const token = await computer.new(TokenSc, [publicKey, supply, name])
       setVisible(false)
       console.log(
         `Minted ${token.name} with supply ${supply} and id ${token._id}`
       )
-    } catch (err: any) {
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      } catch (err: any) {
       if (err.message.startsWith('Insufficient balance in address'))
         alert(
           `You need testnet coins to mint a token. To get free testnet coins open the your wallet. If you have just made a deposit you might have to reload the browser.`
@@ -47,9 +49,9 @@ const MintToken: React.FC<IMintTokenProps> = ({ computer }) => {
               <b>Supply</b>
               <br />
               <Input
-                type="number"
-                value={supply}
-                onChange={(e) => setSupply(parseInt(e.target.value))}
+                type="string"
+                value={supplyString}
+                onChange={(e) => setSupplyString(e.target.value)}
               />
               <br />
               <br />
@@ -58,7 +60,7 @@ const MintToken: React.FC<IMintTokenProps> = ({ computer }) => {
               <Input
                 type="string"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value || '')}
               />
               <br />
               <br />

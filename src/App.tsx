@@ -25,7 +25,7 @@ const Header = styled.div`
 `
 
 const App: React.FC = () => {
-  const [computer, setComputer] = useState<typeof Computer>(null)
+  const [computer, setComputer] = useState<typeof Computer | null>(null)
   const [objects, setObjects] = useState<TokenType[]>([])
   const [chain, setChain] = useState('LTC')
 
@@ -37,7 +37,7 @@ const App: React.FC = () => {
     const isLoggedIn = password && chain
     // if you are currently logging in
     if (isLoggedIn && !computer) {
-      setComputer(new Computer({ 
+      setComputer(new Computer({
         seed: password,
         chain: 'LTC',
         url: 'https://node.bitcoincomputer.io',
@@ -45,7 +45,7 @@ const App: React.FC = () => {
 
         // To run locally on regtest, uncomment the following lines:
         // url: 'http://127.0.0.1:3000',
-        // network: 'regtest' 
+        // network: 'regtest'
       }))
       console.log('Bitcoin Computer created on ' + chain)
       // if you are currently logging out
@@ -53,7 +53,7 @@ const App: React.FC = () => {
       console.log('You have been logged out')
       setComputer(null)
     }
-  }, 3000)
+  }, 1000)
 
   useInterval(() => {
     const refresh = async () => {

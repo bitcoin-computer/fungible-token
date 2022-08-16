@@ -1,6 +1,6 @@
 # Bitcoin Token
 
-A hackable token for LTC. Intended as a starting point for developers to build on top of. Build on the [Bitcoin Computer](http://bitcoincomputer.io) library.
+A hackable token for LTC. It is intended as a starting point for developers to build on top of. It's built on the [Bitcoin Computer](http://bitcoincomputer.io) library.
 
 The smart contract itself could not be simpler:
 
@@ -20,25 +20,25 @@ class Token {
 }
 ````
 
-The constructor creates a new Token object that stores ``amount`` tokens and that is owned by a public key ``to``. The send function first checks for insufficient funds. If there are sufficient funds, a new object with ``number`` tokens is created and the amount in the current token is reduced by ``number``. As this is the only way to update the amount of a token this guarantees that the total number of tokens remains constant.
+The constructor creates a new Token object that stores ``supply`` tokens and that is owned by a public key ``to``. The send function first checks for insufficient funds. If there are sufficient funds, a new object with ``amount`` tokens is created, and the number of coins in the current token is reduced by ``amount``. As this is the only way to update the amount of a token, this guarantees that the total number of tokens remains constant.
 
 You can find more information in the accompanying [Medium Article](https://medium.com/@clemensley/how-to-build-a-token-on-bitcoin-in-javascript-c2439cf1b273).
 
 ## Start the app
 
-Clone the repo and run
+Clone the repo, and run
 
 ````
 npm run start
 ````
 
-To log in you need a BIP39 seed phrase. You can generate a new seed for example from [here](https://iancoleman.io/bip39/). You then need to fund the wallet using a [LTC faucet](https://testnet-faucet.com/ltc-testnet/)
+To log in, you need a BIP39 seed phrase. You can generate a new seed, for example, from [here](https://iancoleman.io/bip39/). You then need to fund the wallet using a [LTC faucet](https://testnet-faucet.com/ltc-testnet/)
 
-For more information see the [Bitcoin Computer Docs](https://docs.bitcoincomputer.io/getting-started/run-in-a-browser) or ask in the [Telegram Group](https://t.me/joinchat/FMrjOUWRuUkNuIt7zJL8tg).
+For more information, see the [Bitcoin Computer Docs](https://docs.bitcoincomputer.io/getting-started/run-in-a-browser), or ask in the [Telegram Group](https://t.me/joinchat/FMrjOUWRuUkNuIt7zJL8tg).
 
 ## Contributing
 
-The app is very bare bones and contributions are more than welcome. Have a look at the open issues, or make a pull request with a new feature. You can also request a feature request by creating an issue.
+The app is very bare bones, and contributions are more than welcome. Have a look at the open issues, or make a pull request with a new feature. You can also make a feature request by creating an issue.
 
 ## Screenshot
 
